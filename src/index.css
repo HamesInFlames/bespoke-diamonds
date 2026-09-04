@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Bespoke Diamonds design tokens  (client brand — see docs/design-decisions.md)
+   Gold sampled from the logo (#F8D090) and deepened for contrast.
+   ------------------------------------------------------------------ */
+@theme {
+  --color-ivory: #faf7f1;
+  --color-ivory-deep: #f3eee3;
+  --color-ink: #141210;
+  --color-ink-soft: #26221d;
+  --color-stone: #6f675c;
+  --color-hairline: #e4dccd;
+  --color-champagne: #d4b36a;
+  --color-champagne-light: #e8d39c;
+  --color-gold: #9c7a3c;
+  --color-gold-deep: #7a5f2e;
+  --color-cream-text: #f1ebdf;
+
+  --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-brand: "Italiana", Georgia, serif;
+  --font-sans: "Jost", "Helvetica Neue", Arial, sans-serif;
+
+  --text-display-xl: clamp(2.75rem, 6vw, 4.75rem);
+  --text-display-lg: clamp(2.25rem, 4.5vw, 3.5rem);
+  --text-display-md: clamp(1.75rem, 3vw, 2.5rem);
+  --text-display-sm: 1.5rem;
+
+  --spacing-section: clamp(4rem, 8vw, 6.5rem);
+  --container-site: 80rem;
+
+  --ease-luxe: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+  body {
+    @apply bg-ivory text-ink-soft font-sans font-light antialiased;
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display text-ink font-medium;
+    line-height: 1.1;
+    text-wrap: balance;
+  }
+  p { max-width: 66ch; }
+  :focus-visible {
+    outline: 2px solid var(--color-champagne);
+    outline-offset: 3px;
+  }
+  ::selection { background: var(--color-champagne-light); color: var(--color-ink); }
+  img { max-width: 100%; height: auto; }
+}
+
+@layer components {
+  .eyebrow {
+    @apply font-brand uppercase text-gold text-xs;
+    letter-spacing: 0.22em;
+  }
+  .eyebrow--light { @apply text-champagne; }
+  .measure { max-width: 66ch; }
+  .hairline { @apply border-hairline; }
+  .tabular { font-variant-numeric: tabular-nums; }
+}
+
+/* On dark sections the whole palette flips to champagne-on-ink */
+.theme-dark {
+  @apply bg-ink text-cream-text;
+}
+.theme-dark h1, .theme-dark h2, .theme-dark h3 { @apply text-cream-text; }
+.theme-dark .eyebrow { @apply text-champagne; }

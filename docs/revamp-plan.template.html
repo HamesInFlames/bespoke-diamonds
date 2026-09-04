@@ -1,0 +1,320 @@
+<title>Bespoke Diamonds Revamp</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Italiana&family=Jost:wght@300;400;500;600&display=swap">
+<style>
+:root{
+  --ground:#FAF7F1; --ink:#141210; --text:#26221D; --stone:#6F675C; --hair:#E4DCCD;
+  --gold:#D4B36A; --gold-deep:#9C7A3C; --panel:#F3EEE3; --dark:#141210; --dark-text:#F1EBDF;
+  --ok:#3F6B4A; --warn:#A8542B;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --ground:#141210; --ink:#F4EFE4; --text:#E4DDD0; --stone:#A89F90; --hair:#2E2A24;
+  --gold:#D4B36A; --gold-deep:#D9BC77; --panel:#1D1A16; --dark:#0B0A08; --dark-text:#F1EBDF;
+  --ok:#8BC49A; --warn:#E0906A; }}
+:root[data-theme="dark"]{
+  --ground:#141210; --ink:#F4EFE4; --text:#E4DDD0; --stone:#A89F90; --hair:#2E2A24;
+  --gold:#D4B36A; --gold-deep:#D9BC77; --panel:#1D1A16; --dark:#0B0A08; --dark-text:#F1EBDF;
+  --ok:#8BC49A; --warn:#E0906A; }
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--text);font-family:Jost,"Helvetica Neue",Arial,sans-serif;font-weight:300;font-size:16px;line-height:1.6;margin:0}
+a{color:var(--gold-deep);text-decoration:none;border-bottom:1px solid var(--hair)}
+a:hover{border-color:var(--gold)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.wrap{display:grid;grid-template-columns:220px minmax(0,860px);gap:64px;max-width:1180px;margin:0 auto;padding:56px 32px 96px}
+@media(max-width:900px){.wrap{grid-template-columns:minmax(0,1fr);gap:24px;padding:32px 20px 72px} nav.toc{position:static;border:0;padding:0}}
+nav.toc{position:sticky;top:32px;align-self:start;font-size:13px;letter-spacing:.02em}
+nav.toc .eyebrow{margin-bottom:12px}
+nav.toc ol{list-style:none;margin:0;padding:0;border-left:1px solid var(--hair)}
+nav.toc li a{display:block;padding:6px 0 6px 14px;border:0;color:var(--stone);margin-left:-1px;border-left:1px solid transparent}
+nav.toc li a:hover{color:var(--gold-deep);border-left-color:var(--gold)}
+.eyebrow{font-family:Italiana,Georgia,serif;text-transform:uppercase;letter-spacing:.18em;font-size:12px;color:var(--gold-deep)}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;color:var(--ink);text-wrap:balance;font-weight:500;line-height:1.15;margin:0}
+h1{font-size:52px;margin:8px 0 12px}
+h2{font-size:34px;margin:0 0 18px;padding-top:16px}
+h3{font-size:22px;margin:28px 0 8px}
+header.top{border-bottom:1px solid var(--hair);padding-bottom:28px;margin-bottom:44px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end}
+header.top img{width:88px;height:88px;object-fit:contain}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px 28px;font-size:13px;color:var(--stone);margin-top:16px}
+.meta b{display:block;color:var(--ink);font-weight:500}
+section{padding:8px 0 40px;border-bottom:1px solid var(--hair);margin-bottom:24px}
+section:last-of-type{border:0}
+p{max-width:66ch;margin:0 0 14px}
+ul,ol{max-width:70ch;padding-left:20px;margin:0 0 14px}
+li{margin:4px 0}
+.lead{font-size:19px;font-family:"Cormorant Garamond",Georgia,serif;font-weight:400;color:var(--ink);max-width:60ch}
+.tablewrap{overflow-x:auto;margin:8px 0 20px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th{text-align:left;font-weight:500;color:var(--ink);font-size:12px;text-transform:uppercase;letter-spacing:.08em;padding:10px 12px 10px 0;border-bottom:1px solid var(--ink)}
+td{padding:10px 12px 10px 0;border-bottom:1px solid var(--hair);vertical-align:top}
+td:first-child{color:var(--ink);font-weight:400;white-space:nowrap}
+.swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin:12px 0 20px}
+.sw{border:1px solid var(--hair);padding:0 0 8px}
+.sw i{display:block;height:56px;margin-bottom:8px}
+.sw b{font-weight:500;color:var(--ink);font-size:13px;display:block;padding:0 10px}
+.sw span{font-size:12px;color:var(--stone);padding:0 10px;font-variant-numeric:tabular-nums}
+.type-demo{border:1px solid var(--hair);padding:22px 24px;margin:12px 0 20px;display:grid;gap:8px}
+.type-demo .d{font-family:"Cormorant Garamond",Georgia,serif;font-size:36px;color:var(--ink);line-height:1.1}
+.type-demo .i{font-family:Italiana,Georgia,serif;letter-spacing:.2em;text-transform:uppercase;font-size:12px;color:var(--gold-deep)}
+.type-demo .b{font-family:Jost,sans-serif;font-size:15px;color:var(--text);max-width:52ch}
+.pages{display:grid;gap:10px;margin:8px 0 20px}
+.page{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:14px 0;border-top:1px solid var(--hair)}
+.page:last-child{border-bottom:1px solid var(--hair)}
+.page .n{font-family:"Cormorant Garamond",Georgia,serif;font-size:21px;color:var(--ink)}
+.page .n small{display:block;font-family:Jost,sans-serif;font-size:12px;color:var(--stone);letter-spacing:.04em}
+.page ol{margin:0;padding-left:18px;font-size:14.5px}
+@media(max-width:600px){.page{grid-template-columns:1fr;gap:6px}}
+.photos{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;margin:10px 0 18px}
+.photos figure{margin:0}
+.photos img{width:100%;aspect-ratio:1;object-fit:cover;display:block;border:1px solid var(--hair)}
+.photos figcaption{font-size:11.5px;color:var(--stone);margin-top:5px;line-height:1.35}
+.tag{display:inline-block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border:1px solid currentColor;border-radius:2px;margin-right:6px;vertical-align:middle}
+.tag.ok{color:var(--ok)} .tag.warn{color:var(--warn)} .tag.gold{color:var(--gold-deep)}
+.callout{background:var(--panel);border-left:2px solid var(--gold);padding:16px 20px;margin:16px 0 20px;max-width:70ch}
+.callout p{margin:0}
+.dark{background:var(--dark);color:var(--dark-text);padding:28px 32px;margin:20px 0}
+.dark h3{color:var(--dark-text);margin-top:0}
+.dark .eyebrow{color:var(--gold)}
+.dark p{color:var(--dark-text)}
+ol.steps{counter-reset:s;list-style:none;padding:0;max-width:none}
+ol.steps li{counter-increment:s;display:grid;grid-template-columns:44px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--hair)}
+ol.steps li::before{content:counter(s,decimal-leading-zero);font-family:"Cormorant Garamond",Georgia,serif;font-size:24px;color:var(--gold-deep);line-height:1}
+ol.steps b{font-weight:500;color:var(--ink)}
+.q li{margin:8px 0}
+footer{color:var(--stone);font-size:13px;margin-top:40px}
+</style>
+
+<div class="wrap">
+<nav class="toc" aria-label="Contents">
+  <div class="eyebrow">Contents</div>
+  <ol>
+    <li><a href="#snapshot">1 · Where the site stands</a></li>
+    <li><a href="#direction">2 · Design direction</a></li>
+    <li><a href="#sitemap">3 · Site map</a></li>
+    <li><a href="#pages">4 · Page by page</a></li>
+    <li><a href="#features">5 · Features carried over</a></li>
+    <li><a href="#photos">6 · Photo inventory</a></li>
+    <li><a href="#confirm">7 · Confirm with Romi</a></li>
+    <li><a href="#build">8 · Build plan</a></li>
+  </ol>
+</nav>
+
+<main>
+<header class="top">
+  <div>
+    <div class="eyebrow">Kim Consultant · Website revamp plan</div>
+    <h1>Bespoke Diamonds</h1>
+    <p class="lead">A ground-up rebuild of bespokediamonds.ca that keeps every conversion path the business relies on, uses the photography already on the site, and gives Romi's 35 years in the trade the presentation it has earned.</p>
+    <div class="meta">
+      <div><b>Client</b>Romi Tsafrir · Thornhill / Vaughan, ON</div>
+      <div><b>Current site</b>Webflow, by Variance Marketing<br>last published 27 May 2026</div>
+      <div><b>Status</b>Discovery complete · 3 Sep 2026<br>awaiting confirmations + repo</div>
+    </div>
+  </div>
+  <img src="{{IMG:OFFICIAL_202_1_.png}}" alt="Bespoke Diamonds crown logo">
+</header>
+
+<section id="snapshot">
+  <div class="eyebrow">01</div>
+  <h2>Where the site stands today</h2>
+  <p>Eleven pages on Webflow. The business already has the right conversion plumbing: a Podium text-us bubble, click-to-call with Google Ads phone tracking, a LeadConnector booking calendar, and a contact form. What it lacks is a presentation that matches the wholesale credentials and custom work, and content that is consistent and complete.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Area</th><th>What is there now</th></tr>
+    <tr><td>Pages</td><td>Home · About Us · Our Services · Rings · Wedding Bands · Bracelets · Watches · Earrings · Necklaces · Schedule Appointment · Contact Us · Privacy Policy</td></tr>
+    <tr><td>Conversions</td><td>Podium "Text us" widget · tel: 416-879-9387 with Google Ads conversion (AW-11484726786) · LeadConnector booking iframe on the appointment page and every collection page · Webflow contact form (name, email, phone, message)</td></tr>
+    <tr><td>Media</td><td>Two Vimeo CAD-render videos · about 40 product photos over six collection pages · seven partner logos · six five-star testimonials</td></tr>
+    <tr><td>Type &amp; colour</td><td>Open Sans body, Italiana headings, Poppins buttons · muted gold buttons on white · champagne-gold logo</td></tr>
+    <tr><td>Socials</td><td>facebook.com/bespokediamonds.canada · instagram.com/bespokediamonds.canada · info@bespokediamonds.ca</td></tr>
+    <tr><td>Missing</td><td>Address and hours (only "6 days a week, by appointment") · Google rating · FAQ · natural-vs-lab guidance · structured data · meta descriptions</td></tr>
+  </table></div>
+
+  <h3>What the rebuild fixes</h3>
+  <ul>
+    <li><b>Duplicated home sections.</b> Temporary Ring, Lifetime Upgrade and Out-of-the-box Request each appear twice in the page (a desktop and a mobile copy).</li>
+    <li><b>Three founding dates.</b> "Since 1969, 35+ years" on Home; "Since 1995" and "since 1999" on About. One story is needed.</li>
+    <li><b>Bare collection pages.</b> Image grids with no names, specs, filters, lightbox or a way to ask about a piece.</li>
+    <li><b>Borrowed product photos.</b> Many grid images trace by filename to Tiffany, Brilliant Earth, Clean Origin, Cartier, Blancpain and Amazon listings. The Watches page shows brands Romi may not sell.</li>
+    <li><b>Weight.</b> The hero is a 24 KB stock crop while the stylesheet still references about 40 unused template photos.</li>
+    <li><b>Small errors.</b> Currency set to USD; "pirces", "dissapointed", "finance" for fiancé, "SCHedule"; privacy policy names bespokediamonds.com.</li>
+  </ul>
+</section>
+
+<section id="direction">
+  <div class="eyebrow">02</div>
+  <h2>Design direction</h2>
+  <p>The jewellers that convert well online (VRAI, Mejuri, Brilliant Earth, Tiffany, and locally Dainty Diamond) follow one proven pattern: a quiet ivory ground, a single warm metal accent, a refined serif for headlines, generous space, photography that carries the page, and a "Book an appointment" action that never leaves the screen. We apply that pattern using Bespoke's own gold, sampled from the logo and deepened for contrast. This is the client's brand throughout, not Kim Consultant's.</p>
+
+  <h3>Palette</h3>
+  <div class="swatches">
+    <div class="sw"><i style="background:#FAF7F1;border-bottom:1px solid #E4DCCD"></i><b>Ivory</b><span>#FAF7F1 · ground</span></div>
+    <div class="sw"><i style="background:#141210"></i><b>Ink</b><span>#141210 · text, footer</span></div>
+    <div class="sw"><i style="background:#D4B36A"></i><b>Champagne</b><span>#D4B36A · accent, rules</span></div>
+    <div class="sw"><i style="background:#9C7A3C"></i><b>Deep gold</b><span>#9C7A3C · gold text</span></div>
+    <div class="sw"><i style="background:#6F675C"></i><b>Warm stone</b><span>#6F675C · secondary</span></div>
+    <div class="sw"><i style="background:#E4DCCD"></i><b>Hairline</b><span>#E4DCCD · dividers</span></div>
+  </div>
+  <p>Gold stays an accent: hairlines, eyebrows, hover states, one primary button. Dark ink sections (footer, the appointment band) carry champagne type so the page has rhythm without heavy fills.</p>
+
+  <h3>Type</h3>
+  <div class="type-demo">
+    <div class="i">Italiana · eyebrows and wordmark echo</div>
+    <div class="d">Custom diamonds, made for you.</div>
+    <div class="b">Jost for body and interface: geometric and quiet, it sits well with the crown geometry of the logo. Cormorant Garamond carries headlines. Carat and millimetre figures use tabular numerals.</div>
+  </div>
+
+  <h3>Layout and motion</h3>
+  <ul>
+    <li>Twelve-column grid, 1280 px maximum, consistent 88 px section rhythm.</li>
+    <li>Slim sticky header that turns solid on scroll. "Book appointment" is always visible; on mobile a bottom bar offers Call · Text · Book.</li>
+    <li>Motion follows the KC scroll playbook: fade-and-rise reveals, hover zoom on collection tiles, and one hero moment (a slow drift on the hero photo, or a scrubbed rotation of the three loose-diamond renders already on the site). No scroll hijacking, and reduced-motion is respected.</li>
+  </ul>
+</section>
+
+<section id="sitemap">
+  <div class="eyebrow">03</div>
+  <h2>Site map</h2>
+  <p>Every current URL is kept so search rankings and Google Ads landing pages carry over unchanged.</p>
+  <div class="tablewrap"><table>
+    <tr><th>URL</th><th>Page</th><th>Change</th></tr>
+    <tr><td>/</td><td>Home</td><td>Rebuilt, duplicates removed</td></tr>
+    <tr><td>/about-us</td><td>About</td><td>Story, credentials, partners</td></tr>
+    <tr><td>/our-services</td><td>Services</td><td>Six services with pre-selected booking</td></tr>
+    <tr><td>/rings … /necklaces</td><td>Six collections</td><td>One template driven by data files</td></tr>
+    <tr><td>/schedule-appointment</td><td>Booking</td><td>Calendar plus what to expect</td></tr>
+    <tr><td>/contact-us</td><td>Contact</td><td>Form via email relay, call, text</td></tr>
+    <tr><td>/privacy-policy</td><td>Legal</td><td>Corrected and readable</td></tr>
+  </table></div>
+  <p>Recommended small additions: a <b>/custom-design</b> page for the three-step process, the Vimeo renders and the Raptors pendant, and an FAQ block on Home. No blog.</p>
+</section>
+
+<section id="pages">
+  <div class="eyebrow">04</div>
+  <h2>Page by page</h2>
+  <div class="pages">
+    <div class="page"><div class="n">Home<small>/</small></div>
+      <ol>
+        <li>Hero: full-bleed photo, headline "Custom diamonds, made for you." Sub-line: 35+ years trading rough and polished diamonds, by appointment, wholesale pricing. Buttons: Book an appointment, Text us.</li>
+        <li>Trust bar: GIA, IGI, Rapaport, Israel Diamond Exchange, Canadian Jewellers Association, Malca-Amit, Harold Weinstein.</li>
+        <li>"It starts with knowledge": split layout, the cut/symmetry/fluorescence copy tightened into a checklist.</li>
+        <li>Six collection tiles with hover zoom.</li>
+        <li>Three-step process (occasion, ideas and references, we build) with the two Vimeo renders as "We bring your design to life".</li>
+        <li>Three promises: 100% satisfaction guarantee, free lifetime upgrade on natural loose diamonds, 3-day Temporary Ring.</li>
+        <li>Reviews carousel from the six existing testimonials, Google rating badge if Romi shares the profile.</li>
+        <li>Out-of-the-box requests as an icon list: repair, appraisal, insurance claims, adding diamonds to watches, upgrades, selling, second opinions.</li>
+        <li>Dark appointment band, then footer with links, collections, socials, phone, email and service area.</li>
+      </ol></div>
+    <div class="page"><div class="n">About<small>/about-us</small></div>
+      <ol>
+        <li>Hero with Romi's red-dress ring photo and "Second-generation diamond purveyors".</li>
+        <li>Timeline of the real story once dates are confirmed.</li>
+        <li>Credentials grid: Diamond Bourse of Canada founding member, CJA, Israel Diamond Exchange, Rapaport trusted brand.</li>
+        <li>3D magnified diamond-viewing technology.</li>
+        <li>Wholesale heritage (Birks, European Jewellery, Calgary Jewellery, $30M+ sold, pending confirmation).</li>
+        <li>"We promise to deliver" four promises, partner logos, booking call to action.</li>
+      </ol></div>
+    <div class="page"><div class="n">Services<small>/our-services</small></div>
+      <ol>
+        <li>Alternating photo and text blocks: Custom Design Specialist, 3D Jewellery Designer, GIA-certified Gemologist and appraisals, Special requests (10K to 19K gold, platinum, ethical origin, natural or lab-grown, milgrain, engraving, sizing), Help me match her style with the Temporary Ring, curated collections.</li>
+        <li>Each block ends in a Book button that pre-selects the service on the booking page.</li>
+      </ol></div>
+    <div class="page"><div class="n">Collections<small>/rings and five more</small></div>
+      <ol>
+        <li>One template, six data files. Category line, filter chips (metal, style), responsive grid with piece name and short spec, lightbox.</li>
+        <li>"Enquire about this piece" opens the contact form with the piece filled in.</li>
+        <li>"And many more, book to see the full catalogue", then the appointment band.</li>
+        <li>Existing grid photos reused now and flagged for replacement with Romi's own inventory shots.</li>
+      </ol></div>
+    <div class="page"><div class="n">Booking<small>/schedule-appointment</small></div>
+      <ol>
+        <li>Left: what to expect (private session with a diamantaire, 3D viewing, phone, email or in person, Thornhill by appointment).</li>
+        <li>Right: the same LeadConnector calendar in a responsive wrapper, with Call and Text fallbacks.</li>
+      </ol></div>
+    <div class="page"><div class="n">Contact<small>/contact-us</small></div>
+      <ol>
+        <li>Form (name, email, phone, message, optional piece of interest) relayed to info@bespokediamonds.ca with a spam honeypot.</li>
+        <li>Call and Text buttons, socials, service-area note, privacy line.</li>
+      </ol></div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="eyebrow">05</div>
+  <h2>Features carried over one to one</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Feature</th><th>Today</th><th>In the rebuild</th></tr>
+    <tr><td>Text us</td><td>Podium widget script</td><td>Same Podium script, loaded after first interaction for speed, plus an SMS link in the mobile bar</td></tr>
+    <tr><td>Book appointment</td><td>LeadConnector iframe</td><td>Same calendar, responsive wrapper, service pre-selection from the Services page</td></tr>
+    <tr><td>Click to call</td><td>tel: link with Google Ads phone conversion</td><td>Kept, conversion event preserved</td></tr>
+    <tr><td>Contact form</td><td>Webflow form</td><td>Email-relay form service to info@, the KC standard; no backend to maintain</td></tr>
+    <tr><td>Design videos</td><td>Two Vimeo embeds</td><td>Same embeds, lazy-loaded behind poster frames</td></tr>
+    <tr><td>Reviews</td><td>Six static quotes</td><td>Same quotes, optional live Google rating</td></tr>
+    <tr><td>Analytics</td><td>Google Ads tag</td><td>Kept; GA4 added if a property exists</td></tr>
+  </table></div>
+</section>
+
+<section id="photos">
+  <div class="eyebrow">06</div>
+  <h2>Photo inventory</h2>
+  <p>All 121 images and logos on the live site have been pulled into the project (24 MB, with a manifest mapping each file to its source URL and page). They fall into three groups.</p>
+
+  <h3><span class="tag ok">Own</span>Romi's photography and work, use first</h3>
+  <div class="photos">
+    <figure><img src="{{IMG:css-79B99663-D5BF-4FB7-92DE-C2E9719A1010.jpg}}" alt=""><figcaption>Red-dress ring photo, About hero</figcaption></figure>
+    <figure><img src="{{IMG:css-1A6D2843-4C5B-4A96-AEB4-E79522D22957.jpg}}" alt=""><figcaption>Necklace portrait, home section</figcaption></figure>
+    <figure><img src="{{IMG:css-IMG_5641-scaled.jpg}}" alt=""><figcaption>White-blazer pendant, knowledge section</figcaption></figure>
+    <figure><img src="{{IMG:css-08f25f38-c5df-4412-9f16-c8314f1f377c.jpg}}" alt=""><figcaption>Custom Raptors pendant</figcaption></figure>
+    <figure><img src="{{IMG:css-12345.png}}" alt=""><figcaption>Loose diamond renders (oval, radiant, round)</figcaption></figure>
+    <figure><img src="{{IMG:css-diamonds-by-the-carat-tt-m_2x.jpg}}" alt=""><figcaption>Current hero, only 24 KB, request original</figcaption></figure>
+  </div>
+  <p>Plus the logo at 1000 px, seven partner logos, the five-star graphic and the two Vimeo CAD renders.</p>
+
+  <h3><span class="tag gold">Stock</span>Free Unsplash and Pexels backgrounds, safe</h3>
+  <p>About 25 lifestyle photos left over from the Webflow template. A few suit section backgrounds; the rest are dropped so the site loads lean.</p>
+
+  <h3><span class="tag warn">Replace</span>Product grid photos with a licensing risk</h3>
+  <div class="photos">
+    <figure><img src="{{IMG:the-tiffany-setting-engagement-ring-in-platinum-22086588_995766_ED_M.jpg}}" alt=""><figcaption>Tiffany product image</figcaption></figure>
+    <figure><img src="{{IMG:BrilliantEarthSeleneEngagementRing-98b82efe874641908c7e1b86622247df.jpg}}" alt=""><figcaption>Brilliant Earth product image</figcaption></figure>
+    <figure><img src="{{IMG:1579223754-1579019358-cartier-panthere-wjpn0015-1579223741.jpg}}" alt=""><figcaption>Cartier Panthère press image</figcaption></figure>
+    <figure><img src="{{IMG:Blancpain-Le-Brassus-Minute-Repeater-Carousel-0235-3631-55B.jpg}}" alt=""><figcaption>Blancpain press image</figcaption></figure>
+  </div>
+  <div class="callout"><p>Roughly 35 collection photos trace to other retailers' catalogues, plus one Getty and one Photodune licensed image. They stay in the build as placeholders so the layout is real, and we ask Romi for a half-day of product photography or his suppliers' licensed images before launch.</p></div>
+</section>
+
+<section id="confirm">
+  <div class="eyebrow">07</div>
+  <h2>Confirm with Romi before copy is final</h2>
+  <ol class="q">
+    <li><b>Founding story.</b> 1969, 1995 or 1999, and what "second generation" refers to.</li>
+    <li><b>Sales claims.</b> "$30 million sold", "1000+ clients and retailers", and the named retailers Birks, European Jewellery, Calgary Jewellery.</li>
+    <li><b>Memberships still current.</b> Diamond Bourse of Canada founding member, CJA, Israel Diamond Exchange, Rapaport.</li>
+    <li><b>Watches.</b> Whether Bespoke sells Rolex, Cartier or Blancpain, or only diamond-set custom watches. The page may need reframing.</li>
+    <li><b>Programme terms.</b> Lifetime upgrade exclusions, and the Temporary Ring (3 days, 2.5 mm yellow or white gold Tiffany-style mount, credit toward the final mounting).</li>
+    <li><b>Location wording.</b> Thornhill or Vaughan, showroom or office, days and hours.</li>
+    <li><b>Google Business profile</b> link and permission to show the live rating.</li>
+    <li><b>Accounts.</b> Podium, LeadConnector and Google Ads stay as they are.</li>
+    <li><b>Natural versus lab-grown</b> positioning, since both are offered but only natural qualifies for upgrades.</li>
+  </ol>
+</section>
+
+<section id="build">
+  <div class="eyebrow">08</div>
+  <h2>Build plan</h2>
+  <p>Kim Consultant standard stack: React 19, Vite, TypeScript strict, Tailwind and Motion on the front; Express on Railway; Cloudflare DNS. The site is static content plus third-party embeds, so there is no database to run.</p>
+  <ol class="steps">
+    <li><div><b>Discovery</b> (done). Crawl, inventory, this plan.</div></li>
+    <li><div><b>Foundations.</b> Repo scaffold via the KC build ritual, design tokens, type scale, layout shell, header and footer, mobile action bar. Output: a styleguide page.</div></li>
+    <li><div><b>Pages.</b> Home, About, Services, the collections template, Booking, Contact, Privacy. Output: a staging URL to review.</div></li>
+    <li><div><b>Integrations.</b> Podium, LeadConnector, form relay, Google Ads tag, Vimeo, page titles and descriptions, JewelryStore structured data, sitemap, redirect map.</div></li>
+    <li><div><b>Content and photos.</b> Corrected copy signed off; replacement product photos dropped into the data files.</div></li>
+    <li><div><b>QA and launch.</b> Playwright, axe and Lighthouse pass, asset cleanup, DNS cutover, Search Console.</div></li>
+  </ol>
+  <div class="dark">
+    <div class="eyebrow">Next step</div>
+    <h3>Share the GitHub repository</h3>
+    <p>Phase 1 starts the moment the repo link arrives. Answers to section 7 can come in parallel; nothing in Phase 1 or 2 waits on them.</p>
+  </div>
+</section>
+
+<footer>Kim Consultant · We grow with your business. · Prepared 3 September 2026</footer>
+</main>
+</div>

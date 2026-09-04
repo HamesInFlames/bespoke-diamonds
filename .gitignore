@@ -1,0 +1,20 @@
+node_modules
+dist
+dist-ssr
+*.local
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+*.log
+npm-debug.log*
+.vite
+coverage
+playwright-report
+test-results
+
+# raw crawl output (kept locally, not shipped)
+research/html/
+research/webflow.css
+research/contact-sheet*.jpg
