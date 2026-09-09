@@ -127,7 +127,6 @@ h1 em, h2 em { font-weight: 400; color: var(--color-gold); }
 .trust-bar__logo .partner-logo--cja { width: 10.5rem; }
 .trust-bar__logo .partner-logo--malca { width: 5.5rem; }
 .trust-bar__logo .partner-logo--harold { width: 5.5rem; }
-.trust-bar__logo .partner-logo--rapaport, .trust-bar__logo .partner-logo--israel, .trust-bar__logo .partner-logo--cja { filter: invert(1) grayscale(1); }
 @media (min-width: 1600px) { .editorial-hero__image { min-height: 780px; } }
 @media (max-width: 1023px) {
   .editorial-hero__copy { padding: 3rem 2rem; }
