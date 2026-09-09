@@ -62,13 +62,13 @@ export const nav = [
 ] as const
 
 export const partners = [
-  { name: 'GIA', src: '/images/partners/gia.gif' },
-  { name: 'International Gemological Institute', src: '/images/partners/igi.png' },
-  { name: 'Rapaport Diamond Network', src: '/images/partners/rapaport.jpg' },
-  { name: 'Israel Diamond Exchange', src: '/images/partners/israel-diamond-exchange.jpg' },
-  { name: 'Canadian Jewellers Association', src: '/images/partners/cja.png' },
-  { name: 'Malca-Amit', src: '/images/partners/malca-amit.png' },
-  { name: 'Harold Weinstein Gemological', src: '/images/partners/harold-weinstein.png' },
+  { name: 'GIA', src: '/images/partners/gia-official.svg', className: 'partner-logo--gia' },
+  { name: 'International Gemological Institute', src: '/images/partners/igi-official.png', className: 'partner-logo--igi' },
+  { name: 'Rapaport Diamond Network', src: '/images/partners/rapaport-official.svg', className: 'partner-logo--rapaport' },
+  { name: 'Israel Diamond Exchange', src: '/images/partners/israel-diamond-exchange-official.png', className: 'partner-logo--israel' },
+  { name: 'Canadian Jewellers Association', src: '/images/partners/cja-official.png', className: 'partner-logo--cja' },
+  { name: 'Malca-Amit', src: '/images/partners/malca-amit-official.svg', className: 'partner-logo--malca' },
+  { name: 'Harold Weinstein Gemological', src: '/images/partners/harold-weinstein-transparent.png', className: 'partner-logo--harold' },
 ]
 
 export interface Testimonial {

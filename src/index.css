@@ -118,6 +118,16 @@ h1 em, h2 em { font-weight: 400; color: var(--color-gold); }
 .atelier-steps p { font-size: 0.8rem; color: var(--color-stone); margin-top: 0.3rem; }
 .appointment-actions a[href^="tel:"] { color: var(--color-champagne); }
 .appointment-actions a[href^="tel:"]:hover { color: var(--color-champagne-light); }
+.trust-bar__logo { display: grid; place-items: center; height: 4.5rem; min-width: 7.5rem; }
+.trust-bar__logo img { max-height: 4rem; max-width: 11rem; width: auto; height: auto; }
+.trust-bar__logo .partner-logo--gia { width: 10.5rem; }
+.trust-bar__logo .partner-logo--igi { width: 10.5rem; }
+.trust-bar__logo .partner-logo--rapaport { width: 10.5rem; color: var(--color-ink); }
+.trust-bar__logo .partner-logo--israel { width: 4.5rem; max-height: 4.5rem; }
+.trust-bar__logo .partner-logo--cja { width: 10.5rem; }
+.trust-bar__logo .partner-logo--malca { width: 5.5rem; }
+.trust-bar__logo .partner-logo--harold { width: 5.5rem; }
+.trust-bar__logo .partner-logo--rapaport, .trust-bar__logo .partner-logo--israel, .trust-bar__logo .partner-logo--cja { filter: invert(1) grayscale(1); }
 @media (min-width: 1600px) { .editorial-hero__image { min-height: 780px; } }
 @media (max-width: 1023px) {
   .editorial-hero__copy { padding: 3rem 2rem; }
@@ -141,6 +151,11 @@ h1 em, h2 em { font-weight: 400; color: var(--color-gold); }
   .atelier-section { grid-template-columns: 1fr; }
   .atelier-section__image { min-height: 440px; }
   .atelier-section__copy { padding: 3.5rem 1.5rem; }
+  .trust-bar__logos { gap: 1.5rem 1rem; }
+  .trust-bar__logo { min-width: 6.25rem; height: 3.75rem; }
+  .trust-bar__logo img { max-height: 3.25rem; max-width: 7.5rem; }
+  .trust-bar__logo .partner-logo--gia, .trust-bar__logo .partner-logo--igi, .trust-bar__logo .partner-logo--rapaport, .trust-bar__logo .partner-logo--cja { width: 7.25rem; }
+  .trust-bar__logo .partner-logo--israel, .trust-bar__logo .partner-logo--malca, .trust-bar__logo .partner-logo--harold { width: 4.25rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
