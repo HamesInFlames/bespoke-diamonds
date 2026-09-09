@@ -15,6 +15,7 @@ const linkCls = ({ isActive }: { isActive: boolean }) =>
 export function Header() {
   const [solid, setSolid] = useState(false)
   const [open, setOpen] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
   const menuButton = useRef<HTMLButtonElement>(null)
   const mobileNav = useRef<HTMLDivElement>(null)
   const { pathname } = useLocation()
@@ -26,7 +27,10 @@ export function Header() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  useEffect(() => setOpen(false), [pathname])
+  useEffect(() => {
+    setOpen(false)
+    setMenuOpen(false)
+  }, [pathname])
 
   useEffect(() => {
     const desktop = window.matchMedia('(min-width: 1024px)')
@@ -81,11 +85,27 @@ export function Header() {
         <nav aria-label="Primary" className="hidden items-center gap-6 lg:flex xl:gap-8">
           {nav.map((item) =>
             'children' in item ? (
-              <div key={item.label} className="group relative">
-                <NavLink to={item.to} className={linkCls}>
+              <div
+                key={item.label}
+                className="relative flex"
+                onMouseEnter={() => setMenuOpen(true)}
+                onMouseLeave={() => setMenuOpen(false)}
+                onFocus={() => setMenuOpen(true)}
+                onBlur={(e) => {
+                  if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setMenuOpen(false)
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === 'Escape') setMenuOpen(false)
+                }}
+              >
+                <NavLink to={item.to} className={linkCls} aria-haspopup="true" aria-expanded={menuOpen}>
                   {item.label}
                 </NavLink>
-                <div className="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-4 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                <div
+                  className={`absolute left-1/2 top-full z-50 -translate-x-1/2 pt-4 transition-[opacity,visibility] duration-200 ${
+                    menuOpen ? 'visible opacity-100' : 'invisible opacity-0'
+                  }`}
+                >
                   <ul className="min-w-48 border border-hairline bg-ivory p-2 shadow-[0_18px_40px_-20px_rgba(20,18,16,0.25)]">
                     {item.children.map((c) => (
                       <li key={c.to}>
