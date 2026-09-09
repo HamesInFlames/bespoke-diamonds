@@ -19,8 +19,10 @@ export const site = {
     instagram: 'https://www.instagram.com/bespokediamonds.canada/',
   },
   integrations: {
-    // LeadConnector (GoHighLevel) booking calendar — same widget as the current site
-    bookingWidgetId: import.meta.env.VITE_BOOKING_WIDGET_ID ?? 'B6vgwBNr2oOuFdV0dC54',
+    // LeadConnector (GoHighLevel) booking calendar. The old widget (B6vgwBNr2oOuFdV0dC54)
+    // was deleted in Sept 2026 and the live site fell back to "please call". CONFIRM a new
+    // ID with Romi; until then the booking page shows a request form instead of an embed.
+    bookingWidgetId: import.meta.env.VITE_BOOKING_WIDGET_ID ?? '',
     podiumToken: import.meta.env.VITE_PODIUM_TOKEN ?? '',
     gtagId: import.meta.env.VITE_GTAG_ID ?? 'AW-11484726786',
     phoneConversionLabel: import.meta.env.VITE_PHONE_CONVERSION_LABEL ?? '9U4ACITyns4ZEIKMrOQq',

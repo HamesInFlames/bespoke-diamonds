@@ -131,7 +131,7 @@ Existing text, corrected domain (.ca not .com), readable measure.
 5. Lifetime upgrade and Temporary Ring terms (3 days, 2.5 mm yellow/white gold Tiffany-style, credit toward mounting).
 6. Location wording (Thornhill/Vaughan, appointment-only, showroom or office?) and days/hours.
 7. Google Business profile link and permission to show live rating.
-8. Podium, LeadConnector and Google Ads accounts stay as-is?
+8. Podium, LeadConnector and Google Ads accounts stay as-is? **Update 9 Sep:** the LeadConnector calendar (B6vgwBNr2oOuFdV0dC54) has been deleted and the live site now says "please call". Need a new calendar ID, or the booking page keeps its request form.
 9. Natural vs lab-grown positioning (site sells both but upgrade excludes lab).
 
 ---
