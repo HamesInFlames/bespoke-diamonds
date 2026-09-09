@@ -126,7 +126,7 @@ h1 em, h2 em { font-weight: 400; color: var(--color-gold); }
 .trust-bar__logo .partner-logo--israel { width: 11rem; max-height: 4.5rem; }
 .trust-bar__logo .partner-logo--cja { width: 12rem; }
 .trust-bar__logo .partner-logo--malca { width: 9rem; }
-.trust-bar__logo .partner-logo--harold { width: 11rem; }
+.trust-bar__logo .partner-logo--harold { width: 16rem; max-width: 16rem; }
 @media (min-width: 1600px) { .editorial-hero__image { min-height: 780px; } }
 @media (max-width: 1023px) {
   .editorial-hero__copy { padding: 3rem 2rem; }
@@ -156,7 +156,7 @@ h1 em, h2 em { font-weight: 400; color: var(--color-gold); }
   .trust-bar__logo .partner-logo--gia, .trust-bar__logo .partner-logo--igi, .trust-bar__logo .partner-logo--rapaport, .trust-bar__logo .partner-logo--cja { width: 8rem; }
   .trust-bar__logo .partner-logo--israel { width: 8rem; }
   .trust-bar__logo .partner-logo--malca { width: 7rem; }
-  .trust-bar__logo .partner-logo--harold { width: 9rem; }
+  .trust-bar__logo .partner-logo--harold { width: 12rem; max-width: 12rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
