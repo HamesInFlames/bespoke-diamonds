@@ -1,0 +1,212 @@
+<title>Bespoke Diamonds CRM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Italiana&family=Jost:wght@300;400;500;600&display=swap">
+<style>
+:root{--ground:#FAF7F1;--ink:#141210;--text:#26221D;--stone:#6F675C;--hair:#E4DCCD;--gold:#D4B36A;--gold-deep:#9C7A3C;--panel:#F3EEE3;--dark:#141210;--dark-text:#F1EBDF;--ok:#3F6B4A;--warn:#A8542B}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--ground:#141210;--ink:#F4EFE4;--text:#E4DDD0;--stone:#A89F90;--hair:#2E2A24;--gold:#D4B36A;--gold-deep:#D9BC77;--panel:#1D1A16;--dark:#0B0A08;--dark-text:#F1EBDF;--ok:#8BC49A;--warn:#E0906A}}
+:root[data-theme="dark"]{--ground:#141210;--ink:#F4EFE4;--text:#E4DDD0;--stone:#A89F90;--hair:#2E2A24;--gold:#D4B36A;--gold-deep:#D9BC77;--panel:#1D1A16;--dark:#0B0A08;--dark-text:#F1EBDF;--ok:#8BC49A;--warn:#E0906A}
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--text);font-family:Jost,"Helvetica Neue",Arial,sans-serif;font-weight:300;font-size:16px;line-height:1.6;margin:0}
+a{color:var(--gold-deep);text-decoration:none;border-bottom:1px solid var(--hair)}a:hover{border-color:var(--gold)}
+a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.wrap{display:grid;grid-template-columns:220px minmax(0,860px);gap:64px;max-width:1180px;margin:0 auto;padding:56px 32px 96px}
+@media(max-width:900px){.wrap{grid-template-columns:minmax(0,1fr);gap:24px;padding:32px 20px 72px}nav.toc{position:static}}
+nav.toc{position:sticky;top:32px;align-self:start;font-size:13px;letter-spacing:.02em}
+nav.toc ol{list-style:none;margin:12px 0 0;padding:0;border-left:1px solid var(--hair)}
+nav.toc li a{display:block;padding:6px 0 6px 14px;border:0;color:var(--stone);margin-left:-1px;border-left:1px solid transparent}
+nav.toc li a:hover{color:var(--gold-deep);border-left-color:var(--gold)}
+.eyebrow{font-family:Italiana,Georgia,serif;text-transform:uppercase;letter-spacing:.18em;font-size:12px;color:var(--gold-deep)}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;color:var(--ink);text-wrap:balance;font-weight:500;line-height:1.15;margin:0}
+h1{font-size:52px;margin:8px 0 12px}h2{font-size:34px;margin:0 0 18px;padding-top:16px}h3{font-size:22px;margin:28px 0 8px}
+header.top{border-bottom:1px solid var(--hair);padding-bottom:28px;margin-bottom:44px}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px 28px;font-size:13px;color:var(--stone);margin-top:16px}
+.meta b{display:block;color:var(--ink);font-weight:500}
+section{padding:8px 0 40px;border-bottom:1px solid var(--hair);margin-bottom:24px}section:last-of-type{border:0}
+p{max-width:66ch;margin:0 0 14px}ul,ol{max-width:70ch;padding-left:20px;margin:0 0 14px}li{margin:4px 0}
+.lead{font-size:19px;font-family:"Cormorant Garamond",Georgia,serif;font-weight:400;color:var(--ink);max-width:60ch}
+.tablewrap{overflow-x:auto;margin:8px 0 20px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:600px}
+th{text-align:left;font-weight:500;color:var(--ink);font-size:12px;text-transform:uppercase;letter-spacing:.08em;padding:10px 12px 10px 0;border-bottom:1px solid var(--ink)}
+td{padding:10px 12px 10px 0;border-bottom:1px solid var(--hair);vertical-align:top}
+td:first-child{color:var(--ink);font-weight:400;white-space:nowrap}
+.callout{background:var(--panel);border-left:2px solid var(--gold);padding:16px 20px;margin:16px 0 20px;max-width:70ch}.callout p{margin:0}
+.dark{background:var(--dark);color:var(--dark-text);padding:28px 32px;margin:20px 0}.dark h3{color:var(--dark-text);margin-top:0}.dark .eyebrow{color:var(--gold)}.dark p{color:var(--dark-text)}
+.flow{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 18px;font-size:12.5px;letter-spacing:.04em}
+.flow span{border:1px solid var(--hair);padding:5px 10px;color:var(--ink)}
+.flow span.on{border-color:var(--gold);color:var(--gold-deep)}
+.tag{display:inline-block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border:1px solid currentColor;border-radius:2px;margin-right:6px;vertical-align:middle}
+.tag.ok{color:var(--ok)}.tag.warn{color:var(--warn)}.tag.gold{color:var(--gold-deep)}
+ol.steps{counter-reset:s;list-style:none;padding:0;max-width:none}
+ol.steps li{counter-increment:s;display:grid;grid-template-columns:44px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--hair)}
+ol.steps li::before{content:counter(s,decimal-leading-zero);font-family:"Cormorant Garamond",Georgia,serif;font-size:24px;color:var(--gold-deep);line-height:1}
+ol.steps b{font-weight:500;color:var(--ink)}
+.q li{margin:8px 0}
+.sources{font-size:13px;color:var(--stone);columns:2;column-gap:32px}.sources li{break-inside:avoid;margin:0 0 6px}
+@media(max-width:700px){.sources{columns:1}}
+footer{color:var(--stone);font-size:13px;margin-top:40px}
+</style>
+
+<div class="wrap">
+<nav class="toc" aria-label="Contents">
+  <div class="eyebrow">Contents</div>
+  <ol>
+    <li><a href="#needs">1 · What it has to do</a></li>
+    <li><a href="#has">2 · What Romi already has</a></li>
+    <li><a href="#options">3 · The options</a></li>
+    <li><a href="#rec">4 · Recommendation</a></li>
+    <li><a href="#cost">5 · Monthly cost</a></li>
+    <li><a href="#ask">6 · Questions for Romi</a></li>
+    <li><a href="#sources">Sources</a></li>
+  </ol>
+</nav>
+
+<main>
+<header class="top">
+  <div class="eyebrow">Kim Consultant · Research</div>
+  <h1>CRM for Bespoke Diamonds</h1>
+  <p class="lead">Romi already owns most of a CRM and pays a second vendor to duplicate part of it. The right move is to use what he has properly, wire the new site into it, and step up to jewellery-specific software only when the business outgrows it.</p>
+  <div class="meta">
+    <div><b>Business</b>Appointment-only diamantaire, retail custom work plus wholesale to retailers</div>
+    <div><b>Today's stack</b>LeadConnector (GoHighLevel) calendar · Podium texting · Google Ads · website form</div>
+    <div><b>Prepared</b>9 September 2026</div>
+  </div>
+</header>
+
+<section id="needs">
+  <div class="eyebrow">01</div>
+  <h2>What a CRM has to do for this business</h2>
+  <p>Bespoke Diamonds is not a jewellery store in the usual sense. It is appointment-only, one diamantaire facing the client, low volume and high ticket, and it runs two businesses at once.</p>
+  <h3>Retail custom work</h3>
+  <div class="flow"><span>Enquiry</span><span>Consult</span><span>References</span><span>Stone sourcing</span><span class="on">Wholesale quote</span><span>Deposit</span><span class="on">CAD render</span><span>Approval</span><span>Manufacture</span><span>Set</span><span>Delivery</span><span>Review</span></div>
+  <h3>Wholesale</h3>
+  <p>Loose diamonds to retailers such as Birks, European Jewellery and Calgary Jewellery, which means memo and consignment tracking and repeat B2B accounts.</p>
+  <p>Leads arrive from six places: the website form, the booking calendar, the Podium text bubble, phone calls from Google Ads, Instagram and Facebook messages, and referrals. Today nothing joins them up.</p>
+
+  <h3>Promises on the site that only work with records</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Promise</th><th>What the CRM must hold</th></tr>
+    <tr><td>Free lifetime upgrade</td><td>Every natural loose diamond sold: cert number, carat, price paid, date, tax paid</td></tr>
+    <tr><td>3-day temporary ring</td><td>A task that fires three days after purchase to bring the partner in</td></tr>
+    <tr><td>Appraisals and claims</td><td>Appraisal date and value, so a re-appraisal reminder goes out each year</td></tr>
+  </table></div>
+  <p>Add the relationship triggers a jeweller lives on: proposal date, wedding date, anniversary, partner's birthday, ring size, metal preference, budget band.</p>
+
+  <h3>Compliance</h3>
+  <ul>
+    <li><b>CASL.</b> Express consent (an unchecked box, recorded with date and source) before any marketing text or email; an unsubscribe link in every marketing message; consent records kept three years. Appointment reminders and order updates are transactional and exempt. Penalties reach $10 million per violation for businesses.</li>
+    <li><b>PIPEDA.</b> No Canadian data-residency rule, but the privacy policy must disclose processing by US providers, someone (Romi) is the named privacy officer, and the business stays accountable for what vendors do with the data.</li>
+  </ul>
+</section>
+
+<section id="has">
+  <div class="eyebrow">02</div>
+  <h2>What Romi already has</h2>
+  <p>The current site embeds a <b>LeadConnector</b> booking calendar. LeadConnector is the white-label name of <b>GoHighLevel</b> when an agency resells it, so Romi already has a GoHighLevel sub-account, almost certainly under Variance Marketing's agency plan. GoHighLevel is a full CRM: contacts, pipelines, calendar, two-way SMS and email, automations, forms, review requests, a website chat widget and a mobile app. He is probably using a fraction of it.</p>
+  <p>He also pays for <b>Podium</b> for the text-us bubble and review requests. Podium's Core plan lists at $399 a month, and most small businesses land between $450 and $600 after fees and add-ons on an annual contract. Everything Podium does for him, GoHighLevel also does.</p>
+  <div class="callout"><p><b>First question for Romi:</b> who owns the GoHighLevel account, and what does he pay Variance and Podium each month? The answer changes the recommendation more than any feature comparison.</p></div>
+</section>
+
+<section id="options">
+  <div class="eyebrow">03</div>
+  <h2>The options</h2>
+
+  <h3><span class="tag gold">A</span>Jewellery-specific</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Product</th><th>What it is</th><th>Cost (USD)</th><th>Fit</th></tr>
+    <tr><td>Clientbook</td><td>Clienteling platform built only for jewellery retail: profiles with wish lists and ring sizes, a daily "who to contact" list, birthday, anniversary and 90-day-dormant automations, texting, payments. Integrates with The Edge, Jewel360, Lightspeed and Shopify POS.</td><td>From about $295/month; quote required</td><td>Best jewellery data model available, but built for stores with a sales floor. Worth it once Romi has staff or a large active list.</td></tr>
+    <tr><td>Jewel360</td><td>Cloud POS for jewellers: serialized inventory, custom orders and repairs with stage tracking and customer notifications, appraisals; Clientbook bundled on some tiers.</td><td>Quote only; Startup / Core / Plus tiers</td><td>Right answer if he wants inventory, repair tickets and order stages in one system. More than a CRM.</td></tr>
+    <tr><td>The Edge</td><td>The long-standing on-premise jewellery POS.</td><td>$4,000 to $8,000 licence plus $3,000 to $5,000 hardware, annual support</td><td>No. Windows server in the office, no mobile, wrong scale.</td></tr>
+    <tr><td>Lightspeed Retail</td><td>General retail POS with jewellery templates and customer profiles.</td><td>$109 to $339 CAD/month; Lightspeed Payments mandatory at 2.6% + $0.10</td><td>Only if he wants a POS. Appointment-only and quoting wholesale, POS is not his bottleneck.</td></tr>
+    <tr><td>WJewel, Orderry</td><td>Work-order tools with CAD approval and deposit tracking.</td><td>Low hundreds/month</td><td>Niche; a pipeline in GoHighLevel covers the same ground.</td></tr>
+  </table></div>
+
+  <h3><span class="tag gold">B</span>General small-business CRMs</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Product</th><th>Cost (USD)</th><th>Notes</th></tr>
+    <tr><td>GoHighLevel (own account)</td><td>$97/month Starter plus SMS and email usage, typically $20 to $150</td><td>The platform he already has. Unlimited contacts and users. Generic data model, but custom fields cover ring size, cert number, anniversary and consent.</td></tr>
+    <tr><td>HubSpot</td><td>Free CRM; Starter $20/seat/month</td><td>Excellent free tier and forms, but texting is an add-on and automation is thin below Professional at $1,300/month.</td></tr>
+    <tr><td>Zoho CRM</td><td>$14 to $52/user/month</td><td>Cheapest full-featured option; Zoho One at $45/user bundles 45 apps. Steeper setup.</td></tr>
+    <tr><td>Pipedrive</td><td>$14 to $99/user/month</td><td>Clean visual pipeline, weak on marketing consent and SMS.</td></tr>
+  </table></div>
+
+  <h3><span class="tag warn">C</span>Build a custom CRM</h3>
+  <p>Not recommended as the system of record. A CRM's value is in the messaging, calendar, consent handling and mobile app, which take years to get right. What Kim Consultant should build is the glue: the new site's forms and enquiry buttons post straight into the CRM with the piece, occasion and consent captured. A small private client-and-stone book could live on the site later if a packaged CRM cannot hold the lifetime-upgrade records the way Romi wants.</p>
+
+  <h3><span class="tag gold">D</span>Wholesale side</h3>
+  <p>Rapaport Trade (RapNet) is the marketplace, not a CRM. Memo and consignment tracking at Romi's volume fits a second pipeline in the CRM (requested → on memo → due → returned or sold) with reminders before memo expiry. Dedicated diamond-supplier software only earns its cost with multi-location inventory and marketplace sync.</p>
+</section>
+
+<section id="rec">
+  <div class="eyebrow">04</div>
+  <h2>Recommendation</h2>
+  <p class="lead">Phase 1, now: make GoHighLevel the CRM of record and retire Podium.</p>
+  <ol class="steps">
+    <li><div><b>Confirm ownership.</b> If Variance owns the sub-account, have it transferred or open a Starter account and move the calendar. Romi should own his client list.</div></li>
+    <li><div><b>Two pipelines.</b> <i>Custom order</i>: enquiry → consult booked → consulted → quoted → deposit → CAD approval → in production → ready → delivered → review requested. <i>Wholesale memo</i>: requested → on memo → due → closed.</div></li>
+    <li><div><b>Custom fields.</b> Occasion, partner name, proposal or wedding date, anniversary, ring size, metal, budget band, stone cert number, appraisal date and value, upgrade-eligible, CASL consent date and source.</div></li>
+    <li><div><b>Automations.</b> Booking confirmation and reminder; temporary-ring task at day three; review request seven days after delivery; appraisal reminder at twelve months; anniversary text at eleven months (consent required); dormant-at-180-days nudge to Romi, not the client.</div></li>
+    <li><div><b>Replace Podium.</b> GoHighLevel's chat widget and SMS number take over the text bubble and Google review requests. Expected saving: $400 to $600 a month.</div></li>
+    <li><div><b>Site integration</b> (KC, build Phase 3). Contact form and "enquire about this piece" post to a GoHighLevel inbound webhook with piece name and consent flag; booking page passes the selected service; phone clicks keep the Google Ads conversion.</div></li>
+    <li><div><b>Compliance.</b> Consent checkbox on every form, unchecked by default, wording stored; unsubscribe on every marketing message; privacy policy names US processing; Romi named as privacy contact.</div></li>
+  </ol>
+  <div class="dark">
+    <div class="eyebrow">Phase 2, when it hurts</div>
+    <h3>Step up to jewellery software on a trigger, not a hunch.</h3>
+    <p>A second staff member or a wish-list workflow means Clientbook. Inventory, repair tickets and appraisals in one place means Jewel360, which bundles Clientbook. Until one of those is true, the extra $300 or more a month buys nothing he will use.</p>
+  </div>
+</section>
+
+<section id="cost">
+  <div class="eyebrow">05</div>
+  <h2>Monthly cost picture</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Setup</th><th>Monthly (USD)</th><th>Comment</th></tr>
+    <tr><td>Today (estimate)</td><td>Podium ~$450 plus whatever Variance charges for LeadConnector</td><td>No pipeline, no records</td></tr>
+    <tr><td>Recommended</td><td>GoHighLevel $97 plus usage ~$30</td><td>One inbox, pipelines, automations, chat, reviews</td></tr>
+    <tr><td>Later, with clienteling</td><td>Add Clientbook ~$295</td><td>Only with staff or a large active list</td></tr>
+    <tr><td>Later, with POS and inventory</td><td>Jewel360 (quote)</td><td>Takes over order stages; keep GoHighLevel for marketing or consolidate</td></tr>
+  </table></div>
+</section>
+
+<section id="ask">
+  <div class="eyebrow">06</div>
+  <h2>Questions for Romi</h2>
+  <ol class="q">
+    <li>Who owns the GoHighLevel (LeadConnector) account, and what does he pay Variance and Podium?</li>
+    <li>Volume: enquiries per month, custom orders per month, wholesale accounts active.</li>
+    <li>Any POS or invoicing tool today (QuickBooks, Square, none)?</li>
+    <li>Where are past diamond sales recorded, for lifetime-upgrade eligibility?</li>
+    <li>Should wholesale accounts live in the same system?</li>
+    <li>Has he ever collected marketing consent, or does the list start from zero?</li>
+  </ol>
+</section>
+
+<section id="sources">
+  <div class="eyebrow">Sources</div>
+  <ul class="sources">
+    <li><a href="https://www.clientbook.com/blog/the-best-jewelry-store-clienteling-software-in-2026">Clientbook: jewelry clienteling software guide 2026</a></li>
+    <li><a href="https://www.clientbook.com/blog/the-best-podium-alternative-for-jewelry-stores-that-actually-does-more">Clientbook: Podium alternative, pricing from $295</a></li>
+    <li><a href="https://www.capterra.com/p/183321/Clientbook-App/">Capterra: Clientbook</a></li>
+    <li><a href="https://jewel360.com/point-of-sale-comparisons/the-edge-vs-jewel360">Jewel360 vs The Edge</a></li>
+    <li><a href="https://jewel360.com/pricing">Jewel360 plans</a></li>
+    <li><a href="https://jewel360.com/blog/custom-jewelry-orders">Jewel360: custom jewelry order management</a></li>
+    <li><a href="https://www.lightspeedhq.com/pos/retail/jewellery-store-pos/">Lightspeed jewellery POS</a></li>
+    <li><a href="https://www.pavilionerp.com/the-real-cost-of-lightspeed-retail/">Pavilion: real cost of Lightspeed Retail</a></li>
+    <li><a href="https://www.ruzuku.com/compare/gohighlevel-pricing">GoHighLevel pricing 2026</a></li>
+    <li><a href="https://saleoid.com/blog/gohighlevel-pricing/">GoHighLevel plans and hidden costs</a></li>
+    <li><a href="https://astucia.io/blog/podium-pricing-2026-what-smbs-actually-pay">Podium pricing: what SMBs actually pay</a></li>
+    <li><a href="https://www.socialpilot.co/reviews/blogs/podium-pricing">Podium pricing breakdown 2026</a></li>
+    <li><a href="https://www.resonatehq.com/hubspot-pricing">HubSpot pricing 2026</a></li>
+    <li><a href="https://conduyt.com/resources/crm-pricing-comparison-2026/">CRM pricing comparison 2026 (Zoho, Pipedrive)</a></li>
+    <li><a href="https://www.wjewel.com/blog/jewelry-order-management-system.php">WJewel: order management guide</a></li>
+    <li><a href="https://www.jewelcloud.com/blogs/news/diamond-supplier-software">JewelCloud: diamond supplier software</a></li>
+    <li><a href="https://www.rapnet.com/company/">Rapaport Trade</a></li>
+    <li><a href="https://sendcheckit.com/blog/casl-compliance-guide">CASL compliance guide 2026</a></li>
+    <li><a href="https://www.maximizer.com/blog/crm-data-residency-in-canada-pipeda/">PIPEDA and CRM data residency</a></li>
+    <li><a href="https://www.cloudorbis.com/blog/pipeline-compliance-checklist">PIPEDA checklist for SMBs</a></li>
+  </ul>
+</section>
+
+<footer>Kim Consultant · We grow with your business. · Prices are vendor list prices found in September 2026 and change often; confirm before quoting.</footer>
+</main>
+</div>
