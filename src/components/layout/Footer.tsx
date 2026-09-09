@@ -19,7 +19,7 @@ const link = 'text-[0.9rem] text-cream-text/80 hover:text-champagne transition-c
 export function Footer() {
   return (
     <footer className="theme-dark pb-24 lg:pb-0">
-      <Container className="grid gap-12 py-16 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+      <Container className="grid gap-12 py-16 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
           <Link to="/" className="inline-block text-cream-text" aria-label="Bespoke Diamonds home">
             <Logo />

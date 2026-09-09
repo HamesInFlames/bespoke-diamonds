@@ -35,7 +35,7 @@ export function SectionHeading({ eyebrow, title, lede, align = 'left', className
   const center = align === 'center'
   return (
     <div className={`${center ? 'mx-auto text-center' : ''} max-w-3xl ${className}`}>
-      {eyebrow && <p className="eyebrow mb-4">{eyebrow}</p>}
+      {eyebrow && <p className={`eyebrow mb-4 ${center ? 'mx-auto' : ''}`}>{eyebrow}</p>}
       <h2 className="text-display-lg">{title}</h2>
       {lede && <p className={`mt-5 text-lg text-stone ${center ? 'mx-auto' : ''}`}>{lede}</p>}
     </div>

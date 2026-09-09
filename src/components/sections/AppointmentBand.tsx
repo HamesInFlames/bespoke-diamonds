@@ -12,14 +12,14 @@ export function AppointmentBand() {
         <Reveal>
           <p className="eyebrow mb-4">By appointment only</p>
           <h2 id="book-heading" className="text-display-lg">
-            Sit down with a diamantaire, not a salesperson.
+            Let’s create something you’ll treasure.
           </h2>
           <p className="mt-5 max-w-xl text-cream-text/75">
-            One client at a time, in person or by phone. Compare stones side by side under 3D magnification and leave
-            with a wholesale quote, not a retail one.
+            A private conversation, expert guidance and possibilities made personal.
+            Tell us what you have in mind. We’ll take it from there.
           </p>
         </Reveal>
-        <Reveal delay={0.1} className="flex flex-wrap gap-4 lg:justify-end">
+        <Reveal delay={0.1} className="appointment-actions flex flex-wrap items-center gap-4 lg:justify-end">
           <Button to="/schedule-appointment" variant="light" size="lg">
             Book an appointment
           </Button>

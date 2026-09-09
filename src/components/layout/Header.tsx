@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { Container } from '@/components/ui/Container'
 import { Logo } from '@/components/ui/Logo'
@@ -15,6 +15,8 @@ const linkCls = ({ isActive }: { isActive: boolean }) =>
 export function Header() {
   const [solid, setSolid] = useState(false)
   const [open, setOpen] = useState(false)
+  const menuButton = useRef<HTMLButtonElement>(null)
+  const mobileNav = useRef<HTMLDivElement>(null)
   const { pathname } = useLocation()
 
   useEffect(() => {
@@ -27,6 +29,38 @@ export function Header() {
   useEffect(() => setOpen(false), [pathname])
 
   useEffect(() => {
+    const desktop = window.matchMedia('(min-width: 1024px)')
+    const closeOnDesktop = () => { if (desktop.matches) setOpen(false) }
+    desktop.addEventListener('change', closeOnDesktop)
+    return () => desktop.removeEventListener('change', closeOnDesktop)
+  }, [])
+
+  useEffect(() => {
+    if (!open) return
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setOpen(false)
+        menuButton.current?.focus()
+      }
+      if (event.key === 'Tab') {
+        const links = Array.from(mobileNav.current?.querySelectorAll<HTMLElement>('a[href]') ?? [])
+        const first = menuButton.current
+        const last = links.at(-1)
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault()
+          last?.focus()
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault()
+          first?.focus()
+        }
+      }
+    }
+    menuButton.current?.focus()
+    document.addEventListener('keydown', onKeyDown)
+    return () => document.removeEventListener('keydown', onKeyDown)
+  }, [open])
+
+  useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : ''
     return () => {
       document.body.style.overflow = ''
@@ -36,15 +70,15 @@ export function Header() {
   return (
     <header
       className={`sticky top-0 z-40 transition-[background-color,box-shadow,border-color] duration-300 border-b ${
-        solid ? 'bg-ivory/95 backdrop-blur border-hairline shadow-[0_1px_0_0_rgba(20,18,16,0.04)]' : 'bg-ivory border-transparent'
+        solid ? 'bg-ivory border-hairline shadow-[0_1px_0_0_rgba(20,18,16,0.04)]' : 'bg-ivory border-transparent'
       }`}
     >
-      <Container className="flex h-[76px] items-center justify-between gap-6">
+      <Container className="flex h-[88px] items-center justify-between gap-6">
         <Link to="/" aria-label="Bespoke Diamonds home" className="text-ink">
           <Logo />
         </Link>
 
-        <nav aria-label="Primary" className="hidden items-center gap-8 lg:flex">
+        <nav aria-label="Primary" className="hidden items-center gap-6 lg:flex xl:gap-8">
           {nav.map((item) =>
             'children' in item ? (
               <div key={item.label} className="group relative">
@@ -82,7 +116,7 @@ export function Header() {
           <a
             href={site.phoneHref}
             onClick={trackPhoneClick}
-            className="inline-flex items-center gap-2 font-sans text-[0.8rem] tracking-[0.06em] text-ink tabular hover:text-gold"
+            className="hidden xl:inline-flex items-center gap-2 font-sans text-[0.8rem] tracking-[0.06em] text-ink tabular hover:text-gold"
           >
             <PhoneIcon /> {site.phoneDisplay}
           </a>
@@ -90,6 +124,7 @@ export function Header() {
         </div>
 
         <button
+          ref={menuButton}
           type="button"
           className="-mr-2 inline-flex h-11 w-11 items-center justify-center text-ink lg:hidden cursor-pointer"
           aria-expanded={open}
@@ -102,9 +137,10 @@ export function Header() {
       </Container>
 
       <div
+        ref={mobileNav}
         id="mobile-nav"
         hidden={!open}
-        className="fixed inset-x-0 top-[76px] bottom-0 z-40 overflow-y-auto bg-ivory lg:hidden"
+        className="fixed inset-x-0 top-[88px] bottom-0 z-40 overflow-y-auto bg-ivory lg:hidden"
       >
         <Container className="flex flex-col gap-8 py-8">
           <ul className="flex flex-col gap-4">

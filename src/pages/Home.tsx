@@ -7,152 +7,107 @@ import { ArrowIcon } from '@/components/ui/Icons'
 import { TrustBar } from '@/components/sections/TrustBar'
 import { Testimonials } from '@/components/sections/Testimonials'
 import { collections, site } from '@/data/site'
+import { collectionDetails } from '@/data/collections'
 import { useSeo } from '@/lib/seo'
 
-const collectionImages: Record<string, string> = {
-  rings: '/images/photos/hands-rings.jpg',
-  'wedding-bands': '/images/photos/hands-rings.jpg',
-  bracelets: '/images/photos/hero-bracelet.jpg',
-  watches: '/images/photos/showroom-01.jpg',
-  earrings: '/images/photos/necklace-portrait.jpg',
-  necklaces: '/images/photos/pendant-blazer.jpg',
-}
-
 const promises = [
-  {
-    title: '100% satisfaction guarantee',
-    body: 'If the finished piece is not right the first time, we make another at our expense.',
-  },
-  {
-    title: 'Free lifetime diamond upgrade',
-    body: 'Trade any natural loose diamond bought from us toward a larger one, any time. Lab-grown stones, gemstones and settings excluded.',
-  },
-  {
-    title: '3-day temporary ring',
-    body: 'Propose with the stone in a classic mount, then bring your partner in to choose the final setting. The mount is credited in full.',
-  },
+  { title: 'Made right, for you.', body: 'Our satisfaction guarantee means that if your finished piece is not right the first time, we make another at our expense.' },
+  { title: 'Room to grow.', body: 'Our lifetime upgrade programme applies to loose natural diamonds purchased from us. Lab-grown diamonds, gemstones and settings are excluded; original duty and tax are not credited.' },
+  { title: 'A proposal. Then a choice.', body: 'Propose with a three-day temporary setting, then choose the final design together. The temporary mounting is credited toward your new setting.' },
 ]
 
 export function Home() {
-  useSeo({
-    title: 'Bespoke Diamonds | Custom Diamonds & Jewellery, Toronto',
-    description:
-      'Custom-made diamonds and jewellery from second-generation diamantaires. Wholesale pricing, GIA-certified expertise, by appointment in Thornhill, Ontario.',
-  })
-
+  useSeo({ title: 'Bespoke Diamonds | Custom Diamonds & Jewellery, Toronto', description: 'Discover custom diamond jewellery, personal guidance and wholesale pricing. Book a private consultation with Bespoke Diamonds in Thornhill, Ontario.' })
   return (
     <>
-      {/* Hero — sized to content; photo carries it */}
-      <section className="relative isolate overflow-hidden bg-ink text-cream-text">
-        <img
-          src="/images/photos/necklace-portrait.jpg"
-          alt=""
-          className="absolute inset-0 -z-10 h-full w-full object-cover object-[50%_30%] opacity-70"
-          fetchPriority="high"
-        />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-ink via-ink/55 to-ink/20" aria-hidden="true" />
-        <Container className="flex min-h-[70vh] flex-col justify-end pb-16 pt-32 lg:pb-24">
-          <Reveal>
-            <p className="eyebrow eyebrow--light mb-5">{site.yearsInTrade} years in rough and polished diamonds</p>
-            <h1 className="text-display-xl max-w-3xl text-cream-text">{site.tagline}</h1>
-            <p className="mt-6 max-w-xl text-lg text-cream-text/80">
-              Design, buy, sell or remake. One diamantaire, one client at a time, at wholesale rates and by appointment
-              only.
-            </p>
-            <div className="mt-9 flex flex-wrap gap-4">
-              <Button to="/schedule-appointment" variant="light" size="lg">
-                Book an appointment
-              </Button>
-              <Button href={site.smsHref} variant="ghost" className="text-champagne">
-                Text us
-              </Button>
-            </div>
-          </Reveal>
-        </Container>
+      <section className="editorial-hero" aria-labelledby="hero-heading">
+        <div className="editorial-hero__copy">
+          <p className="eyebrow mb-7">Fine jewellery. A personal experience.</p>
+          <h1 id="hero-heading">Some things<br />are simply<br /><em>meant for you.</em></h1>
+          <span className="editorial-rule" aria-hidden="true" />
+          <p className="hero-description">An extraordinary diamond. A design that feels like you. Discover the pleasure of creating something truly personal, with a diamantaire by your side.</p>
+          <div className="mt-8 flex flex-wrap items-center gap-x-7 gap-y-5">
+            <Button to="/schedule-appointment" size="lg">Book a consultation <ArrowIcon /></Button>
+            <a href="#collections" className="text-link">Explore the collections</a>
+          </div>
+          <p className="hero-location">{site.area} <span aria-hidden="true">·</span> By appointment</p>
+        </div>
+        <figure className="editorial-hero__image">
+          <img src="/images/photos/solitaire-editorial-v2.png" alt="Editorial concept of an oval diamond solitaire in yellow gold, resting on ivory silk and stone" width={1122} height={1402} fetchPriority="high" />
+          <figcaption><span>The art of bespoke</span><span>Uniquely yours.</span></figcaption>
+        </figure>
       </section>
-
-      <TrustBar />
-
-      {/* Knowledge first */}
-      <Section>
-        <div className="grid items-center gap-12 lg:grid-cols-2">
-          <Reveal as="figure" className="m-0 order-last lg:order-first">
-            <img
-              src="/images/photos/pendant-blazer.jpg"
-              alt="Solitaire pendant on a white blazer"
-              className="aspect-[4/5] w-full object-cover"
-              loading="lazy"
-            />
-          </Reveal>
+      <div className="border-y border-hairline">
+        <Container>
+          <ul className="signature-strip">
+            <li><span aria-hidden="true">◇</span> Personal diamond expertise</li>
+            <li><span aria-hidden="true">◇</span> Thoughtfully custom-made</li>
+            <li><span aria-hidden="true">◇</span> Wholesale pricing</li>
+          </ul>
+        </Container>
+      </div>
+      <Section id="collections" className="scroll-mt-28">
+        <div className="collection-heading">
+          <SectionHeading eyebrow="The collections" title={<>For every chapter.<br /><em>For no reason at all.</em></>} />
+          <p className="max-w-sm text-stone">A promise, a milestone, or a little everyday brilliance. Find your inspiration. We’ll make it personal.</p>
+        </div>
+        <ul className="mt-12 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+          {collections.map((collection, i) => {
+            const detail = collectionDetails[collection.slug]
+            return (
+              <Reveal as="li" key={collection.slug} delay={(i % 3) * 0.05}>
+                <Link to={`/${collection.slug}`} className="collection-card group">
+                  <figure className="collection-card__image">
+                    <img src={detail.pieces[0].image} alt={detail.pieces[0].name} loading="lazy" width={600} height={500} />
+                    <span className="collection-card__index" aria-hidden="true">0{i + 1}</span>
+                  </figure>
+                  <div className="mt-5 flex items-center justify-between gap-4">
+                    <h3 className="text-display-sm">{collection.name}</h3>
+                    <span className="collection-card__arrow"><ArrowIcon /></span>
+                  </div>
+                  <p className="mt-1 max-w-xs text-sm text-stone">{detail.shortDescription}</p>
+                </Link>
+              </Reveal>
+            )
+          })}
+        </ul>
+      </Section>
+      <section className="atelier-section">
+        <figure className="atelier-section__image">
+          <img src="/images/photos/pendant-blazer.jpg" alt="A delicate diamond solitaire pendant worn with a white blazer" width={1800} height={1200} loading="lazy" />
+          <figcaption>Small details. Extraordinary meaning.</figcaption>
+        </figure>
+        <div className="atelier-section__copy">
           <Reveal>
-            <SectionHeading
-              eyebrow="It starts with knowledge"
-              title="You cannot compare what you have never seen side by side."
-              lede="Cut, symmetry, polish, fluorescence, tint, inclusions, crown angle. We put the stones in front of you under 3D magnification and explain what each one means for the piece and the price."
-            />
-            <ul className="mt-8 grid gap-3 text-[0.95rem] sm:grid-cols-2">
-              {['Wholesale quote once you choose', 'Natural and lab-grown, explained plainly', 'GIA and IGI certified stones', 'Second opinions welcome'].map(
-                (item) => (
-                  <li key={item} className="flex items-start gap-3 border-t border-hairline pt-3">
-                    <span className="mt-2 h-1 w-1 shrink-0 bg-champagne" aria-hidden="true" />
-                    {item}
-                  </li>
-                ),
-              )}
-            </ul>
-            <Button to="/about-us" variant="ghost" className="mt-8">
-              How we work <ArrowIcon />
-            </Button>
+            <p className="eyebrow mb-6">The Bespoke experience</p>
+            <h2 className="text-display-lg">It begins with a conversation.<br /><em>And a little curiosity.</em></h2>
+            <p className="mt-6 text-stone">You don’t need to know everything about diamonds. That’s what we’re here for. We take the time to understand your ideas, show you the possibilities, and help you choose with confidence.</p>
+            <ol className="atelier-steps">
+              <li><span>01</span><div><h3>Tell us your story</h3><p>Bring your ideas, your occasion and your budget.</p></div></li>
+              <li><span>02</span><div><h3>Discover your diamond</h3><p>Compare stones side by side, with expert guidance.</p></div></li>
+              <li><span>03</span><div><h3>Make it yours</h3><p>Refine the design and let us bring it to life.</p></div></li>
+            </ol>
+            <Button to="/about-us" variant="ghost">Get to know Bespoke <ArrowIcon /></Button>
           </Reveal>
         </div>
-      </Section>
-
-      {/* Collections */}
-      <Section tone="deep">
-        <SectionHeading eyebrow="Collections" title="Classic pieces, or the start of your own." align="center" />
-        <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {collections.map((c, i) => (
-            <Reveal as="li" key={c.slug} delay={i * 0.05}>
-              <Link to={`/${c.slug}`} className="group block">
-                <figure className="m-0 overflow-hidden bg-hairline">
-                  <img
-                    src={collectionImages[c.slug]}
-                    alt=""
-                    className="aspect-[4/5] w-full object-cover transition-transform duration-700 ease-luxe group-hover:scale-[1.04]"
-                    loading="lazy"
-                  />
-                </figure>
-                <div className="mt-4 flex items-baseline justify-between">
-                  <h3 className="text-display-sm">{c.name}</h3>
-                  <span className="font-sans text-[0.72rem] uppercase tracking-[0.18em] text-gold">View</span>
-                </div>
-                <p className="mt-1 text-sm text-stone">{c.blurb}</p>
-              </Link>
-            </Reveal>
-          ))}
-        </ul>
-      </Section>
-
-      {/* Promises */}
+      </section>
       <Section>
-        <SectionHeading eyebrow="Our promises" title="Three things nobody else in the trade offers together." />
-        <ul className="mt-12 grid gap-10 md:grid-cols-3">
-          {promises.map((p, i) => (
-            <Reveal as="li" key={p.title} delay={i * 0.06} className="border-t border-ink pt-6">
-              <h3 className="text-display-sm">{p.title}</h3>
-              <p className="mt-3 text-[0.95rem] text-stone">{p.body}</p>
+        <SectionHeading eyebrow="The care continues" title={<>Beautiful today.<br /><em>Considered for a lifetime.</em></>} align="center" />
+        <ul className="mt-14 grid gap-10 md:grid-cols-3">
+          {promises.map((promise, i) => (
+            <Reveal as="li" key={promise.title} delay={i * 0.05} className="border-t border-hairline pt-7">
+              <span className="mb-5 block font-display text-3xl text-gold" aria-hidden="true">0{i + 1}</span>
+              <h3 className="text-display-sm">{promise.title}</h3>
+              <p className="mt-4 text-[0.95rem] text-stone">{promise.body}</p>
             </Reveal>
           ))}
         </ul>
       </Section>
-
-      {/* Reviews */}
       <Section tone="deep">
-        <SectionHeading eyebrow="Client reviews" title="Word of mouth built this business." align="center" />
-        <div className="mt-12">
-          <Testimonials />
-        </div>
+        <SectionHeading eyebrow="Words from our clients" title={<>Their stories.<br /><em>Our greatest compliment.</em></>} align="center" />
+        <div className="mt-12"><Testimonials /></div>
       </Section>
+      <TrustBar />
     </>
   )
 }

@@ -28,7 +28,7 @@ export function Contact() {
     if (!endpoint) {
       // No relay configured yet: fall back to the visitor's mail client.
       const body = encodeURIComponent(
-        `Name: ${data.get('name')}\nPhone: ${data.get('phone')}\nPiece: ${data.get('piece') ?? ''}\n\n${data.get('message')}`,
+        `Name: ${data.get('name')}\nEmail: ${data.get('email')}\nPhone: ${data.get('phone')}\nPiece: ${data.get('piece') ?? ''}\n\n${data.get('message')}`,
       )
       window.location.href = `mailto:${site.email}?subject=Website enquiry&body=${body}`
       return
@@ -111,9 +111,10 @@ export function Contact() {
               <textarea id="message" name="message" rows={5} required className={field} />
             </div>
             <div className="flex flex-wrap items-center gap-5">
-              <Button size="lg" disabled={status === 'sending'}>
-                {status === 'sending' ? 'Sending…' : 'Send message'}
+              <Button type="submit" size="lg" disabled={status === 'sending'}>
+                {status === 'sending' ? 'Sending…' : site.integrations.formEndpoint ? 'Send message' : 'Continue in email'}
               </Button>
+              {!site.integrations.formEndpoint && <p className="text-sm text-stone">Opens your email app with your enquiry ready to send.</p>}
               {status === 'sent' && <p className="text-sm text-gold">Thank you. We will be in touch shortly.</p>}
               {status === 'error' && (
                 <p className="text-sm text-stone">
